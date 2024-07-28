@@ -2,7 +2,7 @@ function S = pnumbers_spiral(N, option_display)
 %% pnumbers_spiral : function to display the spiral of prime numbers laying
 % on 6n +/- 1 circles, and check its sum.
 %
-% Author, copyright and support : nicolas (dot) douillet (at) free (dot) fr, 2023.
+% Author : nicolas.douillet9 (at) gmail.com, 2023-2024.
 %
 %
 % Inputs
@@ -74,15 +74,15 @@ if option_display
     figure(1);
     set(gcf,'Color',[1 1 1]);
     
-    plot3(P(1,:),P(2,:),P(3,:),'o','Color',[1 0 0],'Linewidth',2), hold on;
-    line(P(1,:),P(2,:),P(3,:),'Color',[0 0 1],'Linewidth',2), hold on;
+    plot3(P(1,:),P(2,:),P(3,:),'o','Color',[0 0 0],'Linewidth',3), hold on;
+    line(P(1,:),P(2,:),P(3,:),'Color',[0.875 0 0],'Linewidth',2), hold on;
     
-    % % Rectangle triangles and Z axis display option
-    % for k = 1:size(P,2)
-    %
-    %    line([0,P(1,k)],[0,P(2,k)],[P(3,k),P(3,k)],'Color',[0 0 1],'Linewidth',2), hold on;
-    %
-    % end
+    % Rectangle triangles and Z axis display option
+    for k = 1:size(P,2)
+    
+       line([0,P(1,k)],[0,P(2,k)],[P(3,k),P(3,k)],'Color',[0 0 0.875],'Linewidth',2), hold on;
+    
+    end
     %
     % line([0 0],[0 0],[v(1,1) v(1,end)],'Color',[0 0 1],'Linewidth',2), hold on;
     
@@ -102,9 +102,12 @@ if option_display
         
     end
     
-    xlabel('Signed integer unit')
-    ylabel('Signed integer unit')
-    title('Spiral of prime numbers laying on 6n \pm 1 circles');
+    xlabel('Signed integer unit','FontSize',16)
+    ylabel('Signed integer unit','FontSize',16)
+    title({['Spiral of prime numbers from 5 to ',num2str(N)],'laying on 6n \pm 1 radii / circles'},'FontSize',16);
+    legend('Position of primes $$p = 6n \pm 1$$ on the circles','Distance $$l = \sqrt{p''^2-p^2}$$ between consecutives primes','Radii / values of primes','Interpreter','latex','FontSize',12);    
+    
+    box on;
     
 end
 
