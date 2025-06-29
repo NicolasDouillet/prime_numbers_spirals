@@ -2,7 +2,7 @@ function S = pnumbers_spiral(N, option_display)
 %% pnumbers_spiral : function to display the spiral of prime numbers laying
 % on 6n +/- 1 circles, and check its sum.
 %
-% Author : nicolas.douillet (at) free.fr, 2023-2024.
+% Author : nicolas.douillet (at) free.fr, 2023-2025.
 %
 %
 % Inputs
@@ -37,8 +37,7 @@ end
 
 
 %% Body
-u = 1:N;
-v = cat(2,1,u(isprime(u))); % prime vector
+v = cat(2,1,primes(N)); % prime vector
 
 M = cat(1,v(1:end-1),v(2:end),zeros(1,length(v)-1));
 M = cat(2,[0;0;0],M);
@@ -97,17 +96,15 @@ if option_display
     % gca.Cipping = 'off';
     
     
-    % Plot polar centered circles of prime radii
-    pm_pot_idx = mod(u.^2-1,24) == 0;
-    pm_pot_idx(1) = 0;
+    % Plot polar centered circles of prime radii    
     cmap = colormap(jet);    
     alpha = linspace(0,2*pi,361);
     base_circle_X = cos(alpha);
     base_circle_Y = sin(alpha);
     
-    for k = u(pm_pot_idx)
+    for k = v(4:end)
         
-        line(k*base_circle_X,k*base_circle_Y,k*ones(1,numel(alpha)),'Color',cmap(round(k*size(jet,1)/numel(u)),:)), hold on;
+        line(k*base_circle_X,k*base_circle_Y,k*ones(1,numel(alpha)),'Color',cmap(round(k*size(jet,1)/N),:)), hold on;
         
     end
     

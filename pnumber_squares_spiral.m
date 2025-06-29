@@ -2,7 +2,7 @@ function L = pnumber_squares_spiral(N, option_display)
 %% pnumber_squares_spiral : function to display the spiral of prime number
 % squares, compute and check its total length from p_n = 5 equals L = 24k + 1.  
 %
-% Author : nicolas.douillet (at) free.fr, 2023-2024.
+% Author : nicolas.douillet (at) free.fr, 2023-2025.
 %
 %
 % Inputs
@@ -32,8 +32,7 @@ end
 
 
 %% Body
-u = 1:N;
-v = cat(2,1,u(isprime(u))); % prime vector
+v = cat(2,1,primes(N)); % prime vector
 
 M = cat(1,v(1:end-1),v(2:end),zeros(1,length(v)-1));   
 M = cat(2,[0;0;0],M);
